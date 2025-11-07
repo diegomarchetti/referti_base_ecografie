@@ -1,0 +1,353 @@
+:root {
+  --bg-body: #ffffff;        /* pagina centrale bianca */
+  --bg-topbar: #ffffff;
+  --bg-sidebar: #f9f9f9;     /* sidebar stile ChatGPT */
+  --bg-card: transparent;
+  --bg-referto: #f9f9f9;     /* bubble referto */
+  --border-soft: #e0e0e0;
+  --accent: #000000;         /* #10a37f;  */
+  --accent-soft: #e2e2e2;
+  --text-main: #202123;
+  --text-muted: #6b6b6b;
+  --placeholder-bg: #fff7cc;
+  --placeholder-text: #9c6b00;
+  --radius-xl: 18px;
+  --shadow-soft: 0 12px 40px rgba(0,0,0,0.06);
+  --font-main: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-main);
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* TOP BAR */
+
+.topbar {
+  height: 52px;
+  background-color: var(--bg-topbar);
+  border-bottom: 1px solid var(--border-soft);
+  display: flex;
+  align-items: center;
+  padding: 0 24px;
+  gap: 10px;
+}
+
+.topbar-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #202123;
+}
+
+/* MENU TOGGLE con SVG */
+
+/* Desktop: nascosto (lo usiamo solo su mobile) */
+.menu-toggle {
+  display: none;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  padding: 4px;
+  margin-left: -4px;
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-toggle img {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+/* Di default: mostra icona "apri", nasconde "chiudi" */
+.menu-toggle .icon-open {
+  display: block;
+}
+.menu-toggle .icon-close {
+  display: none;
+}
+
+/* Quando il menu è aperto → mostra icona chiudi */
+.menu-toggle.active .icon-open {
+  display: none;
+}
+.menu-toggle.active .icon-close {
+  display: block;
+}
+
+/* Hover: leggero feedback */
+.menu-toggle:hover img {
+  filter: brightness(0.2) saturate(1.2);
+}
+
+/* SOLO MOBILE: mostra il toggle */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: inline-flex;
+  }
+}
+
+
+/* LAYOUT */
+
+.app-layout {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+/* OVERLAY mobile */
+
+.sidebar-overlay {
+  display: none;
+}
+
+/* SIDEBAR */
+
+.sidebar {
+  width: 260px;
+  background-color: var(--bg-sidebar);
+  border-right: 1px solid var(--border-soft);
+  padding: 16px 10px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.logo-circle {
+  width: 26px;
+  height: 26px;
+  border-radius: 999px;
+  border: 2px solid var(--accent);
+  margin: 0 6px 2px;
+}
+
+.sidebar-title {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--text-muted);
+  margin: 0 6px 4px;
+}
+
+.template-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.template-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 13px;
+  color: var(--text-main);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.template-icon {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.template-item:hover {
+  background-color: #ececec;
+}
+
+.template-item.active {
+  background-color: var(--accent-soft);
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* MAIN */
+
+.main {
+  flex: 1;
+  padding: 26px 32px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  overflow-y: auto;
+  background-color: #ffffff;
+}
+
+.main-header {
+  display: flex;
+  justify-content: center;
+}
+
+.exam-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 0;
+  color: #202123;
+}
+
+/* CARD / REFERTO */
+
+.card {
+  width: 980px;
+  max-width: 100%;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  box-shadow: none;
+  padding: 0;
+}
+
+/* Header dentro la "bolla" */
+
+.card-inner-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 18px 0;
+  background-color: var(--bg-referto);
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  border: 1px solid #f0f0f0;
+  border-bottom: none;
+}
+
+.card-label {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.copy-btn {
+  margin-left: auto;
+  border: none;
+  padding: 6px 12px;
+  font-size: 11px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  background-color: transparent;
+  color: #666;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+.copy-btn svg {
+  width: 14px;
+  height: 14px;
+}
+copy-btn:hover,
+.copy-btn:hover {
+  background-color: var(--accent-soft);
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.copy-feedback {
+  font-size: 10px;
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.copy-feedback.visible {
+  opacity: 1;
+}
+
+/* Box testo referto */
+
+.referto-box {
+  margin-top: 0;
+  padding: 18px;
+  border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+  background-color: var(--bg-referto);
+  border: 1px solid #f0f0f0;
+  border-top: none;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #5b5b5b;
+  white-space: pre-wrap;
+  font-style: italic;
+}
+
+/* Placeholder evidenziati */
+
+.placeholder {
+  background-color: var(--placeholder-bg);
+  color: var(--placeholder-text);
+  padding: 0 2px;
+  border-radius: 4px;
+  font-weight: 500;
+  font-style: normal;
+}
+
+/* RESPONSIVE: sidebar a scomparsa con burger */
+
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .app-layout {
+    position: relative;
+  }
+
+  .sidebar {
+    position: fixed;
+    top: 52px;           /* sotto la topbar */
+    bottom: 0;
+    left: 0;
+    transform: translateX(-100%);
+    transition: transform 0.25s ease;
+    box-shadow: 4px 0 18px rgba(0,0,0,0.08);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    position: fixed;
+    inset: 52px 0 0 0;  /* copre l'area sotto la topbar */
+    background: rgba(0,0,0,0.22);
+    display: none;
+    z-index: 900;
+  }
+
+  .sidebar-overlay.active {
+    display: block;
+  }
+
+  .main {
+    padding: 18px 14px 24px;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .card-inner-header {
+    padding: 8px 14px 0;
+  }
+
+  .referto-box {
+    padding: 14px;
+  }
+}
