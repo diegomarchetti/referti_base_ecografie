@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <title>Referti Ecografia - Dott.ssa Iorio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- TOP BAR -->
+<header class="topbar">
+  <button class="menu-toggle" id="menuToggle" aria-label="Apri menu referti">
+    <img src="img/apri_barra_laterale.svg" alt="" class="icon-open">
+    <img src="img/chiudi_barra_laterale.svg" alt="" class="icon-close">
+  </button>
+  <div class="topbar-title">Alessia Iorio</div>
+</header>
+
+
+  <!-- OVERLAY MOBILE PER SIDEBAR -->
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+  <!-- LAYOUT APP -->
+  <div class="app-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+      <!-- <div class="logo-circle"></div> -->
+      <div class="sidebar-title">Referti</div>
+
+      <nav class="template-list" id="templateList">
+        <div class="template-item active" data-template-id="normale">
+          <span class="template-icon">📝</span>
+          <span>Normale</span>
+        </div>
+        <div class="template-item" data-template-id="epatopatia-cronica">
+          <span class="template-icon">📝</span>
+          <span>Epatopatia Cronica</span>
+        </div>
+        <div class="template-item" data-template-id="steatosi">
+          <span class="template-icon">📝</span>
+          <span>Steatosi</span>
+        </div>
+        <div class="template-item" data-template-id="nefrite">
+          <span class="template-icon">📝</span>
+          <span>Nefrite</span>
+        </div>
+        <div class="template-item" data-template-id="idronefrosi">
+          <span class="template-icon">📝</span>
+          <span>Idronefrosi</span>
+        </div>
+        <div class="template-item" data-template-id="colecistite-acuta-cronica">
+          <span class="template-icon">📝</span>
+          <span>Colecistite Acuta e Cronica</span>
+        </div>
+        <div class="template-item" data-template-id="colecisti-scleroatrofica-litiasica">
+          <span class="template-icon">📝</span>
+          <span>Colecisti Scleroatrofica Litiasica</span>
+        </div>
+        <div class="template-item" data-template-id="epatica-evoluzione">
+          <span class="template-icon">📝</span>
+          <span>Cirrosi Epatica o Evoluzione</span>
+        </div>
+        <div class="template-item" data-template-id="nefropatia-cronica">
+          <span class="template-icon">📝</span>
+          <span>Nefropatia Cronica</span>
+        </div>
+      </nav>
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+      <div class="main-header">
+        <h1 class="exam-title" id="examTitle">Ecografia – Normale</h1>
+      </div>
+
+      <section class="card">
+        <div class="card-inner-header">
+          <div class="card-label">referto</div>
+          <button class="copy-btn" id="copyBtn" type="button">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="9" y="9" width="11" height="11" rx="2" ry="2" fill="currentColor" opacity="0.16"></rect>
+              <rect x="4" y="4" width="11" height="11" rx="2" ry="2" fill="none" stroke="currentColor" stroke-width="1.6"></rect>
+            </svg>
+            Copia referto
+          </button>
+          <div class="copy-feedback" id="copyFeedback">Copiato negli appunti</div>
+        </div>
+
+        <div class="referto-box" id="refertoBox"></div>
+      </section>
+    </main>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
